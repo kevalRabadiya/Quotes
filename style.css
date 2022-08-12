@@ -1,0 +1,56 @@
+body {
+    background-image: linear-gradient(45deg, skyblue, white);
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 70vh;
+    background: var(--main-color);
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow: hidden;
+    color: #797d7f;
+    font-size: 25px;
+    letter-spacing: 0.5px;
+    display: grid;
+}
+
+#tweet {
+    width: 30px;
+}
+
+.number:hover img {
+    animation: rot 1s linear;
+}
+
+@keyframes rot {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+button {
+    border-radius: 10px;
+    height: 30px;
+}
+
+button:hover {
+    height: 35px;
+    color: red;
+}
+
+h6 {
+    color: black;
+    font-size: 15px;
+    opacity: 15%;
+    margin-bottom: 0px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

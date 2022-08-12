@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Quotes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <!-- <div id="quote"></div>
+    <div id="author"></div>
+    <button id="newQ">new quotes</button>
+    <button id="tweet">Tweet</button> -->
+
+    <div class="container">
+        <div class="inner">
+            <div class="box">
+                <p class="number">
+                    <img src="./logo.png" id="tweet" alt="tweetMe" title="TweetMe" />
+                </p>
+                <div class="text">
+                    <i class="start-quote fas fa-quote-left"></i>
+                    <p id="quote" class="quote"></p>
+                    <p id="author" class="author"></p>
+                </div>
+                <label class="button">
+                    <p id="newQ"><button
+                            style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+                            New Quotes</button>
+                    </p>
+                </label>
+            </div>
+        </div>
+        <h6>&copy;Keval Rabadiya</h6>
+    </div>
+    <script>
+        const quotes = document.getElementById("quote");
+        const authors = document.getElementById("author");
+        const newQ = document.getElementById("newQ");
+        const tweet = document.getElementById("tweet");
+        let realData = "";
+        let quotesData = "";
+        const tweetnow = () => {
+            let link = `https://twitter.com/intent/tweet?text=${quotesData.text}`;
+            window.open(link);
+        }
+        const getNewquates = () => {
+            let rnum = Math.floor(Math.random() * 50);
+            //console.log(rnum)
+            quotesData = realData[rnum];
+            quotes.innerText = `${quotesData.text}`;
+            //console.log(realData[rnum].text)
+            quotesData == null
+                ? (authors.innerText = "unknown")
+                : (authors.innerText = `${quotesData.author}`);
+
+
+        };
+        const getQuotes = async () => {
+            const api = "https://type.fit/api/quotes";
+            try {
+                let data = await fetch(api);
+                realData = await data.json();
+                getNewquates();
+                // console.log(realData[0].text);
+            } catch (error) { }
+        };
+        getQuotes();
+        tweet.addEventListener('click', tweetnow);
+        newQ.addEventListener('click', getNewquates);
+
+    </script>
+</body>
+
+</html>
